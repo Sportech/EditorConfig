@@ -85,8 +85,8 @@ indent_style = tab
 [*.{cs,csx,cake,vb,vbx}]
 # "this." and "Me." qualifiers
 # https://docs.microsoft.com/visualstudio/ide/editorconfig-language-conventions#this-and-me
-dotnet_style_qualification_for_field = true:error
-dotnet_style_qualification_for_property = true:error
+dotnet_style_qualification_for_field = false:silent
+dotnet_style_qualification_for_property = false:silent
 dotnet_style_qualification_for_method = false:silent
 dotnet_style_qualification_for_event = false:silent
 # Language keywords instead of framework type names for type references
@@ -267,6 +267,11 @@ dotnet_naming_style.internal_error_style.capitalization  = pascal_case
 dotnet_naming_style.internal_error_style.required_prefix = ____INTERNAL_ERROR____
 dotnet_naming_style.internal_error_style.required_suffix = ____INTERNAL_ERROR____
 
+# underscore prefix for private fields
+dotnet_naming_style.prefix_private_fields_with_underscore_style.capitalization = camel_case
+dotnet_naming_style.prefix_private_fields_with_underscore_style.required_prefix = _
+
+
 ##########################################
 # .NET Design Guideline Field Naming Rules
 # Naming rules for fields follow the .NET Framework design guidelines
@@ -337,7 +342,7 @@ dotnet_naming_rule.stylecop_instance_fields_must_be_private_rule.severity       
 dotnet_naming_symbols.stylecop_private_fields_group.applicable_accessibilities = private
 dotnet_naming_symbols.stylecop_private_fields_group.applicable_kinds           = field
 dotnet_naming_rule.stylecop_private_fields_must_be_camel_case_rule.symbols     = stylecop_private_fields_group
-dotnet_naming_rule.stylecop_private_fields_must_be_camel_case_rule.style       = camel_case_style
+dotnet_naming_rule.stylecop_private_fields_must_be_camel_case_rule.style       = prefix_private_fields_with_underscore_style
 dotnet_naming_rule.stylecop_private_fields_must_be_camel_case_rule.severity    = warning
 
 # Local variables must be camelCase
